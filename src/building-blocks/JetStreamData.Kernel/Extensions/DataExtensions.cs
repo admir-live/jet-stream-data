@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -8,6 +9,19 @@ namespace JetStreamData.Kernel.Extensions;
 
 public static class DataExtensions
 {
+    public static IServiceCollection AddSqliteInMemoryContext<TDbContext>(this IServiceCollection serviceCollection)
+        where TDbContext : DbContext
+    {
+        var connectionStringBuilder =
+            new SqliteConnectionStringBuilder { DataSource = $"Database-{Guid.NewGuid():N};Mode=Memory;Cache=Shared" };
+        var connectionString = connectionStringBuilder.ToString();
+
+        serviceCollection.AddDbContext<TDbContext>(builder =>
+            builder.UseSqlite(connectionString).EnableSensitiveDataLogging().EnableDetailedErrors());
+
+        return serviceCollection;
+    }
+    
     public static IServiceCollection AddDataRepository(this IServiceCollection serviceCollection, Assembly[] assemblies,
         IList<string> namespaceMarkers = null)
     {

@@ -5,6 +5,7 @@ using JetStreamData.Kernel.AspNet;
 using JetStreamData.Kernel.AspNet.Configurations;
 using JetStreamData.Kernel.Extensions;
 using JetStreamData.Kernel.Infrastructure.Caching.IoC;
+using JetStreamData.Kernel.Infrastructure.Caching.Providers.Memory;
 
 namespace JetStreamData.FlightsService;
 
@@ -40,6 +41,7 @@ public sealed class Startup : JetStreamDataStartup
         collection
             .AddCache(cacheConfiguration =>
             {
+                cacheConfiguration.DefaultCacheProvider = typeof(MemoryCacheProvider);
                 cacheConfiguration.UseInMemoryCache();
             });
     };
