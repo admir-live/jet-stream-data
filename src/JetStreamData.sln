@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetStreamData.Kernel.Infras
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetStreamData.FlightsService", "services\JetStreamData.FlightsService\JetStreamData.FlightsService.csproj", "{D6A783A1-8D71-44FD-AA7B-9EE3257AAC55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetStreamData.Kernel.AspNet", "building-blocks\JetStreamData.Kernel.AspNet\JetStreamData.Kernel.AspNet.csproj", "{28A5B7E2-B204-4D06-94AF-DB431A8252A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,7 @@ Global
 		{6880168F-7553-4599-B60C-20157DC794B4} = {2F3564ED-E19A-4C84-B8F8-14E42A5E29A0}
 		{28D314D1-8524-4142-8FBA-A4F504DA68BD} = {2F3564ED-E19A-4C84-B8F8-14E42A5E29A0}
 		{D6A783A1-8D71-44FD-AA7B-9EE3257AAC55} = {0ECD6108-E955-47E6-BB9A-34D370339F0F}
+		{28A5B7E2-B204-4D06-94AF-DB431A8252A2} = {2F3564ED-E19A-4C84-B8F8-14E42A5E29A0}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{083A841C-C288-4FC0-ACA8-90CCCC79CE3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -40,5 +43,9 @@ Global
 		{D6A783A1-8D71-44FD-AA7B-9EE3257AAC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6A783A1-8D71-44FD-AA7B-9EE3257AAC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6A783A1-8D71-44FD-AA7B-9EE3257AAC55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28A5B7E2-B204-4D06-94AF-DB431A8252A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A5B7E2-B204-4D06-94AF-DB431A8252A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A5B7E2-B204-4D06-94AF-DB431A8252A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A5B7E2-B204-4D06-94AF-DB431A8252A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

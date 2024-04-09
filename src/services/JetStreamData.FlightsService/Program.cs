@@ -1,6 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using JetStreamData.Kernel.AspNet;
 
-app.MapGet("/", () => "Hello World!");
+namespace JetStreamData.FlightsService;
 
-app.Run();
+public class Program : JetStreamDataApiProgram<Startup>
+{
+    public static async Task Main(string[] args)
+    {
+        await RunWebHostDefaultsAsync(args, new CancellationToken(false));
+    }
+}

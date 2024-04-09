@@ -18,6 +18,6 @@ public class FlightDbContextDesignTimeFactory : IDesignTimeDbContextFactory<Flig
 
         var optionsBuilder = new DbContextOptionsBuilder<FlightDbContext>();
         optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-        return new FlightDbContext(optionsBuilder.Options, new NullDispatcher());
+        return new FlightDbContext(optionsBuilder.Options, NullDispatcher.New);
     }
 }

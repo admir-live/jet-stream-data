@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\building-blocks\JetStreamData.Kernel.AspNet\JetStreamData.Kernel.AspNet.csproj"/>
     <ProjectReference Include="..\..\building-blocks\JetStreamData.Kernel.Domain\JetStreamData.Kernel.Domain.csproj"/>
     <ProjectReference Include="..\..\building-blocks\JetStreamData.Kernel.Infrastructure\JetStreamData.Kernel.Infrastructure.csproj"/>
   </ItemGroup>
