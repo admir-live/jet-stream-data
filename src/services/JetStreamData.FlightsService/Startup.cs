@@ -4,6 +4,7 @@ using JetStreamData.FlightsService.Infrastructure.Seed;
 using JetStreamData.Kernel.AspNet;
 using JetStreamData.Kernel.AspNet.Configurations;
 using JetStreamData.Kernel.Extensions;
+using JetStreamData.Kernel.Infrastructure.Caching.IoC;
 
 namespace JetStreamData.FlightsService;
 
@@ -35,6 +36,12 @@ public sealed class Startup : JetStreamDataStartup
     {
         collection
             .AddFlightsDbContext(_configuration);
+
+        collection
+            .AddCache(cacheConfiguration =>
+            {
+                cacheConfiguration.UseInMemoryCache();
+            });
     };
 
     protected override Action<IApplicationBuilder> ConfigureApplicationBuilder => builder =>
