@@ -1,5 +1,6 @@
 ﻿using JetStreamData.FlightsService.Infrastructure;
 using JetStreamData.FlightsService.Infrastructure.Extensions;
+using JetStreamData.FlightsService.Infrastructure.Seed;
 using JetStreamData.Kernel.AspNet;
 using JetStreamData.Kernel.AspNet.Configurations;
 using JetStreamData.Kernel.Extensions;
@@ -39,7 +40,16 @@ public sealed class Startup : JetStreamDataStartup
     protected override Action<IApplicationBuilder> ConfigureApplicationBuilder => builder =>
     {
         builder
-            .TryMigrate<FlightDbContext>();
+            .TryMigrate<FlightDbContext>(context =>
+            {
+                if (context.FlightInformations.Any())
+                {
+                    return;
+                }
+
+                context.FlightInformations.AddRange(Seed.Get);
+                context.SaveChanges();
+            });
     };
 
     protected override Action<IApplicationBuilder> PreAction => builder =>

@@ -24,7 +24,6 @@ namespace JetStreamData.FlightsService.Infrastructure.Migrations
                     Flight_Status = table.Column<int>(type: "int", nullable: true),
                     Flight_CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     Flight_ModifiedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    Flight_Id = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     DepartureAirport_Name = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DepartureAirport_IataCode = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)

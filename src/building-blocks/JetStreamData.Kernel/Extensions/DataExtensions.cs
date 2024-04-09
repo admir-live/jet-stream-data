@@ -23,7 +23,8 @@ public static class DataExtensions
         return AddDataRepository(serviceCollection, new[] { Assembly.GetExecutingAssembly() }, Array.Empty<string>());
     }
 
-    public static IApplicationBuilder TryMigrate<TContext>(this IApplicationBuilder applicationBuilder)
+    public static IApplicationBuilder TryMigrate<TContext>(this IApplicationBuilder applicationBuilder,
+        Action<TContext> seedAction = null)
         where TContext : DbContext
     {
         var logger = applicationBuilder.ApplicationServices.GetService<ILogger<TContext>>();
@@ -32,6 +33,7 @@ public static class DataExtensions
             using var scope = applicationBuilder.ApplicationServices.CreateScope();
             using var context = scope.ServiceProvider.GetService<TContext>();
             context.Database.Migrate();
+            seedAction?.Invoke(context);
         }
         catch (Exception e)
         {

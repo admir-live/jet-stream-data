@@ -18,6 +18,7 @@ public class FlightInformationEntityTypeConfiguration : AggregateRootTypeConfigu
         builder.OwnsOne(fi => fi.Flight, flight =>
         {
             flight.WithOwner();
+            flight.Ignore(f => f.Id);
             flight.Property(f => f.Number).IsRequired();
             flight.Property(f => f.Status)
                 .HasConversion(new ValueConverter<FlightStatus, int>(
@@ -28,7 +29,7 @@ public class FlightInformationEntityTypeConfiguration : AggregateRootTypeConfigu
         builder.OwnsOne(fi => fi.DepartureAirport, airport =>
         {
             airport.WithOwner();
-            airport.HasKey(a => a.Id);
+            airport.Ignore(a => a.Id);
             airport.Property(a => a.Name).HasMaxLength(256);
             airport.Property(a => a.Timezone).HasMaxLength(256);
             airport.Property(a => a.IataCode).HasMaxLength(256);
@@ -38,7 +39,7 @@ public class FlightInformationEntityTypeConfiguration : AggregateRootTypeConfigu
         builder.OwnsOne(fi => fi.ArrivalAirport, airport =>
         {
             airport.WithOwner();
-            airport.HasKey(a => a.Id);
+            airport.Ignore(a => a.Id);
             airport.Property(a => a.Name).HasMaxLength(256);
             airport.Property(a => a.Timezone).HasMaxLength(256);
             airport.Property(a => a.IataCode).HasMaxLength(256);
@@ -48,7 +49,7 @@ public class FlightInformationEntityTypeConfiguration : AggregateRootTypeConfigu
         builder.OwnsOne(fi => fi.Airline, airline =>
         {
             airline.WithOwner();
-            airline.HasKey(a => a.Id);
+            airline.Ignore(a => a.Id);
             airline.Property(a => a.Name).HasMaxLength(256);
             airline.Property(a => a.Iata).HasMaxLength(256);
             airline.Property(a => a.Icao).HasMaxLength(256);
@@ -57,17 +58,17 @@ public class FlightInformationEntityTypeConfiguration : AggregateRootTypeConfigu
         builder.OwnsOne(fi => fi.DepartureSchedule, schedule =>
         {
             schedule.WithOwner();
-            schedule.HasKey(s => s.Id);
+            schedule.Ignore(s => s.Id);
         });
 
         builder.OwnsOne(fi => fi.ArrivalSchedule, schedule =>
         {
             schedule.WithOwner();
-            schedule.HasKey(s => s.Id);
+            schedule.Ignore(s => s.Id);
         });
 
         builder
             .Property(fi => fi.RowVersion)
-            .IsConcurrencyToken();
+            .IsRowVersion();
     }
 }

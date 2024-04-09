@@ -46,38 +46,9 @@ namespace JetStreamData.FlightsService.Infrastructure.Migrations
 
             modelBuilder.Entity("JetStreamData.FlightsService.Domain.Entities.FlightInformation", b =>
                 {
-                    b.OwnsOne("JetStreamData.FlightsService.Domain.Entities.Flight", "Flight", b1 =>
-                        {
-                            b1.Property<Guid>("FlightInformationId")
-                                .HasColumnType("char(36)");
-
-                            b1.Property<DateTime>("CreatedAt")
-                                .HasColumnType("datetime(6)");
-
-                            b1.Property<Guid>("Id")
-                                .HasColumnType("char(36)");
-
-                            b1.Property<DateTime>("ModifiedAt")
-                                .HasColumnType("datetime(6)");
-
-                            b1.Property<string>("Number")
-                                .IsRequired()
-                                .HasColumnType("longtext");
-
-                            b1.Property<int?>("Status")
-                                .HasColumnType("int");
-
-                            b1.HasKey("FlightInformationId");
-
-                            b1.ToTable("FlightInformation");
-
-                            b1.WithOwner()
-                                .HasForeignKey("FlightInformationId");
-                        });
-
                     b.OwnsOne("JetStreamData.FlightsService.Domain.Entities.Airline", "Airline", b1 =>
                         {
-                            b1.Property<Guid>("Id")
+                            b1.Property<Guid>("FlightInformationId")
                                 .HasColumnType("char(36)");
 
                             b1.Property<DateTime>("CreatedAt")
@@ -98,17 +69,43 @@ namespace JetStreamData.FlightsService.Infrastructure.Migrations
                                 .HasMaxLength(256)
                                 .HasColumnType("varchar(256)");
 
-                            b1.HasKey("Id");
+                            b1.HasKey("FlightInformationId");
 
                             b1.ToTable("FlightInformation");
 
                             b1.WithOwner()
-                                .HasForeignKey("Id");
+                                .HasForeignKey("FlightInformationId");
+                        });
+
+                    b.OwnsOne("JetStreamData.FlightsService.Domain.Entities.Flight", "Flight", b1 =>
+                        {
+                            b1.Property<Guid>("FlightInformationId")
+                                .HasColumnType("char(36)");
+
+                            b1.Property<DateTime>("CreatedAt")
+                                .HasColumnType("datetime(6)");
+
+                            b1.Property<DateTime>("ModifiedAt")
+                                .HasColumnType("datetime(6)");
+
+                            b1.Property<string>("Number")
+                                .IsRequired()
+                                .HasColumnType("longtext");
+
+                            b1.Property<int?>("Status")
+                                .HasColumnType("int");
+
+                            b1.HasKey("FlightInformationId");
+
+                            b1.ToTable("FlightInformation");
+
+                            b1.WithOwner()
+                                .HasForeignKey("FlightInformationId");
                         });
 
                     b.OwnsOne("JetStreamData.FlightsService.Domain.Entities.Airport", "ArrivalAirport", b1 =>
                         {
-                            b1.Property<Guid>("Id")
+                            b1.Property<Guid>("FlightInformationId")
                                 .HasColumnType("char(36)");
 
                             b1.Property<DateTime>("CreatedAt")
@@ -133,17 +130,17 @@ namespace JetStreamData.FlightsService.Infrastructure.Migrations
                                 .HasMaxLength(256)
                                 .HasColumnType("varchar(256)");
 
-                            b1.HasKey("Id");
+                            b1.HasKey("FlightInformationId");
 
                             b1.ToTable("FlightInformation");
 
                             b1.WithOwner()
-                                .HasForeignKey("Id");
+                                .HasForeignKey("FlightInformationId");
                         });
 
                     b.OwnsOne("JetStreamData.FlightsService.Domain.Entities.Schedule", "ArrivalSchedule", b1 =>
                         {
-                            b1.Property<Guid>("Id")
+                            b1.Property<Guid>("FlightInformationId")
                                 .HasColumnType("char(36)");
 
                             b1.Property<DateTime?>("Actual")
@@ -161,17 +158,17 @@ namespace JetStreamData.FlightsService.Infrastructure.Migrations
                             b1.Property<DateTime>("Scheduled")
                                 .HasColumnType("datetime(6)");
 
-                            b1.HasKey("Id");
+                            b1.HasKey("FlightInformationId");
 
                             b1.ToTable("FlightInformation");
 
                             b1.WithOwner()
-                                .HasForeignKey("Id");
+                                .HasForeignKey("FlightInformationId");
                         });
 
                     b.OwnsOne("JetStreamData.FlightsService.Domain.Entities.Airport", "DepartureAirport", b1 =>
                         {
-                            b1.Property<Guid>("Id")
+                            b1.Property<Guid>("FlightInformationId")
                                 .HasColumnType("char(36)");
 
                             b1.Property<DateTime>("CreatedAt")
@@ -196,17 +193,17 @@ namespace JetStreamData.FlightsService.Infrastructure.Migrations
                                 .HasMaxLength(256)
                                 .HasColumnType("varchar(256)");
 
-                            b1.HasKey("Id");
+                            b1.HasKey("FlightInformationId");
 
                             b1.ToTable("FlightInformation");
 
                             b1.WithOwner()
-                                .HasForeignKey("Id");
+                                .HasForeignKey("FlightInformationId");
                         });
 
                     b.OwnsOne("JetStreamData.FlightsService.Domain.Entities.Schedule", "DepartureSchedule", b1 =>
                         {
-                            b1.Property<Guid>("Id")
+                            b1.Property<Guid>("FlightInformationId")
                                 .HasColumnType("char(36)");
 
                             b1.Property<DateTime?>("Actual")
@@ -224,12 +221,12 @@ namespace JetStreamData.FlightsService.Infrastructure.Migrations
                             b1.Property<DateTime>("Scheduled")
                                 .HasColumnType("datetime(6)");
 
-                            b1.HasKey("Id");
+                            b1.HasKey("FlightInformationId");
 
                             b1.ToTable("FlightInformation");
 
                             b1.WithOwner()
-                                .HasForeignKey("Id");
+                                .HasForeignKey("FlightInformationId");
                         });
 
                     b.Navigation("Airline");

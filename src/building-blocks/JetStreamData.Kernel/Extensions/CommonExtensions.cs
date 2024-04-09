@@ -46,7 +46,6 @@ public static class CommonExtensions
                     await context?.Response.WriteAsJsonAsync(Assembly.GetExecutingAssembly().GetName().Version
                         ?.ToString());
                 })).UseCors("DefaultPolicy")
-            .UseStaticFiles()
             .UseRouting();
 
         preAction?.Invoke(app);
